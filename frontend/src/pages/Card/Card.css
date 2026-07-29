@@ -1,0 +1,19 @@
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #90D5FF;
+    margin: 0;
+}
+
+.card-container {
+    padding: 20px;
+}
+
+.card-page {
+    background: white;
+}
+
