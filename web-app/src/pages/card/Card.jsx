@@ -39,10 +39,6 @@ function Card() {
         }
     }, [currentPage])
 
-    useEffect(() => {
-        console.log(currentPage);
-    }, [currentPage])
-
     return (
         <div>
             <HTMLFlipBook width = {400} height = {560} showCover = {true} ref = {bookRef} useMouseEvents = {false}>
