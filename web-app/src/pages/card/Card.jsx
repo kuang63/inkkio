@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow'
 import HTMLFlipBook from 'react-pageflip';
-import './card.css';
 import { useCardStore } from '../../stores/CardStore';
 import CardPage from '../../components/CardPage';
 import Toolbar from '../../components/ToolBar';
@@ -48,7 +47,7 @@ function Card() {
                 <section className = "page inside-page">
                     <CardPage pageId = {1}/>
                 </section>
-                <section  className = "page inside-page">
+                <section className = "page inside-page">
                     <CardPage pageId = {2}/>
                 </section>
                 <section  className = "page back-page">

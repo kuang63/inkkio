@@ -9,6 +9,8 @@ function CardPage({ pageId }) {
     const page = useCardStore(
         (state) => state.pages.find((p) => p.id === pageId)
     );
+    const bgColor = page.bgColor;
+    const bgTexture = `url(${page.bgTexture})`;
 
     const stageRef = useRef(null)
     const layerRef = useRef(null)
@@ -61,9 +63,20 @@ function CardPage({ pageId }) {
                     node = new Konva.Text(object);
                     break;
 
-                case "rect":
-                    node = new Konva.Rect(object);
+                case "image":
+                    node = new Konva.Image(object);
                     break;
+
+                case "shape":
+                    switch (object.shape) {
+                        case "rect": 
+                            node = new Konva.Image(object);
+                            break;
+
+                        case "circle":
+                            node = new Konva.Circle(object);
+                            break;
+                    }
             }
 
             node.on("dragend", () => {
@@ -103,7 +116,7 @@ function CardPage({ pageId }) {
         layer.draw();
     }, [page]);
 
-    return <div ref = {containerRef}/>;
+    return <div ref = {containerRef} style = {{backgroundColor: bgColor, backgroundImage: bgTexture, backgroundRepeat: "repeat", backgroundSize: "auto",}}/>;
 }
 
 export default CardPage;

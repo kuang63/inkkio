@@ -2,14 +2,38 @@ import { create } from "zustand";
 
 export const useCardStore = create((set) => ({
     pages: [
-        { id: 0, objects: [] }, 
-        { id: 1, objects: [] }, 
-        { id: 2, objects: [] }, 
-        { id: 3, objects: [] }, 
+        { id: 0, bgColor: "#ffffff", bgTexture: "", objects: [] }, 
+        { id: 1, bgColor: "#ffffff", bgTexture: "", objects: [] }, 
+        { id: 2, bgColor: "#ffffff", bgTexture: "", objects: [] }, 
+        { id: 3, bgColor: "#ffffff", bgTexture: "", objects: [] }, 
     ],
     currentPage: 0,
 
     setPage: (pageId) => set({currentPage: pageId}),
+
+    setBgColor: (pageId, color) => 
+        set((state) => ({
+            pages: state.pages.map((page) =>
+                page.id === pageId
+                ? {
+                    ...page, 
+                    bgColor: color                    
+                }
+                : page 
+            ),   
+        })),
+
+    setBgTexture: (pageId, object) => 
+        set((state) => ({
+            pages: state.pages.map((page) =>
+                page.id === pageId
+                ? {
+                    ...page, 
+                    bgTexture: object                    
+                }
+                : page 
+            ),   
+        })),
 
     addObject: (pageId, object) =>
         set((state) => ({
@@ -21,8 +45,7 @@ export const useCardStore = create((set) => ({
                     }
                 : page
             ),
-        }
-    )),
+        })),
 
     updateObject: (pageId, objectId, updates) =>
         set((state) => ({
@@ -38,8 +61,7 @@ export const useCardStore = create((set) => ({
                     }
                 : page
             ),
-        }
-    )),
+        })),
 
     removeObject: (pageId, objectId) =>
         set((state) => ({
@@ -51,6 +73,5 @@ export const useCardStore = create((set) => ({
                     }
                 : page
             ),
-        }
-    )),
+        })),
 }));
